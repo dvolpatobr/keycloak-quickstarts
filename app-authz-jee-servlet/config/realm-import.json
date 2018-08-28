@@ -60,6 +60,20 @@
       "clientRoles": {
         "authz-servlet" : ["uma_protection"]
       }
+    },
+    {
+      "username": "specialuser",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password"
+        }
+      ],
+      "realmRoles": [
+        "user",
+        "special"
+      ]
     }
   ],
   "roles": {
@@ -75,6 +89,10 @@
       {
         "name": "user_premium",
         "description": "User Premium privileges"
+      },
+      {
+        "name": "special",
+        "description": "Special privileges"
       }
     ]
   },
@@ -82,11 +100,11 @@
     {
       "clientId": "authz-servlet",
       "enabled": true,
-      "baseUrl": "http://localhost:8080/authz-servlet",
-      "adminUrl": "http://localhost:8080/authz-servlet",
+      "baseUrl": "http://localhost:8080/myapp",
+      "adminUrl": "http://localhost:8080/myapp",
       "bearerOnly": false,
       "redirectUris": [
-        "http://localhost:8080/authz-servlet/*"
+        "http://localhost:8080/myapp/*"
       ],
       "secret": "secret",
       "authorizationServicesEnabled": true,
@@ -136,6 +154,10 @@
                 "name": "urn:servlet-authz:page:main:actionForUser"
               }
             ]
+          },
+          {
+            "name": "Special Resource",
+            "uri": "/secure/role/*"
           }
         ],
         "policies": [
@@ -243,6 +265,27 @@
             "config": {
               "resources": "[\"Protected Resource\"]",
               "applyPolicies": "[\"All Users Policy\"]"
+            }
+          },
+          {
+            "name": "Only Special Role Policy",
+            "description": "Defines that only special users can do something",
+            "type": "role",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "roles": "[{\"id\":\"special\"}]"
+            }
+          },
+          {
+            "name": "Special Resource Permission",
+            "description": "A policy that defines access to any special resource",
+            "type": "resource",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "resources": "[\"Special Resource\"]",
+              "applyPolicies": "[\"Only Special Role Policy\"]"
             }
           }
         ],

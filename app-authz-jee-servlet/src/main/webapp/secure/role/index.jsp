@@ -11,13 +11,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <%@include file="include-logout.jsp"%>
+    <%@include file="../../include-logout.jsp"%>
     <h2>This is a public resource. Try to access one of these <i>protected</i> resources:</h2>
 
     <p><a href="protected/dynamicMenu.jsp">Dynamic Menu</a></p>
     <p><a href="protected/premium/onlyPremium.jsp">User Premium</a></p>
     <p><a href="protected/admin/onlyAdmin.jsp">Administration</a></p>
-    <p><a href="secure/role">Special Resource</a></p>
 
     <h3>Your permissions are:</h3>
 
