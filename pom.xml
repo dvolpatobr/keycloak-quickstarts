@@ -500,6 +500,9 @@
         <!-- Springboot profile -->
         <profile>
             <id>spring-boot</id>
+            <modules>
+                <module>app-authz-springboot-multitenancy</module>
+            </modules>
             <build>
                 <plugins>
                     <plugin>
