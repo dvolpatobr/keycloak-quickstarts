@@ -39,7 +39,7 @@ To start the <span>Keycloak</span> server on a separate host:
 2. The following shows the command to start the <span>Keycloak</span> server:
 
    ````
-   For Linux:   KEYCLOAK_HOME/bin/standalone.sh -b 0.0.0.0
+   For Linux:   KEYCLOAK_HOME/bin/standalone.sh -b 0.0.0.0 
    For Windows: KEYCLOAK_HOME\bin\standalone.bat -b 0.0.0.0
    ````
 
@@ -52,8 +52,8 @@ To start the <span>Keycloak</span> server on different ports:
 2. The following shows the command to start the <span>Keycloak</span> server:
 
    ````
-   For Linux:   KEYCLOAK_HOME/bin/standalone.sh -Djboss.socket.binding.port-offset=100
-   For Windows: KEYCLOAK_HOME\bin\standalone.bat -Djboss.socket.binding.port-offset=100
+   For Linux:   KEYCLOAK_HOME/bin/standalone.sh -Djboss.socket.binding.port-offset=100 -Dkeycloak.profile.feature.upload_scripts=enabled
+   For Windows: KEYCLOAK_HOME\bin\standalone.bat -Djboss.socket.binding.port-offset=100 -Dkeycloak.profile.feature.upload_scripts=enabled
    ````
 
 3. The URL of the <span>Keycloak</span> server will be http://localhost:8180

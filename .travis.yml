@@ -27,7 +27,9 @@ before_install:
 
 install:
   - travis_wait 20 mvn -s maven-settings.xml clean install --no-snapshot-updates -B -V -q
-  - mvn -s maven-settings.xml -Padd-datasource install -f user-storage-jpa -q
+#  Requires updating to 9.0.1-SNAPSHOT and above
+#  https://issues.redhat.com/browse/KEYCLOAK-13051
+#  - mvn -s maven-settings.xml -Padd-datasource install -f user-storage-jpa -q
 
 before_script:
   - export MAVEN_SKIP_RC=true
